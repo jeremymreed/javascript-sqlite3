@@ -1,0 +1,12 @@
+{
+  "name": "javascript-sqlite3",
+  "version": "0.0.0",
+  "description": "Spike to examine sqlite3 lib for javascript.",
+  "main": "main.js",
+  "author": "Jeremy Reed <reeje76@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "sqlite3": "^5.0.2"
+  }
+}
