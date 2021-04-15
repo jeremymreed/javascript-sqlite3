@@ -2,19 +2,17 @@ const sqlite3 = require('sqlite3');
 const { open } = require('sqlite');
 
 
-const testDatabase = async function (db) {
-  let row = await db.get('SELECT * FROM test WHERE name="Foo Bar"');
-
-  return row;
+const seedDatabase = async function (db) {
+  await db.exec('INSERT INTO test (name) VALUES ("Foo Bar")');
 }
 
 open({
   filename: 'data/foo',
   driver: sqlite3.Database
 }).then((db) => {
-  testDatabase(db)
-    .then((row) => {
-      console.log('Returned row: ', row);
+  seedDatabase(db)
+    .then(() => {
+      console.log('Seeded the database!');
       db.close()
         .then(() => {
           console.log('Closed the database');

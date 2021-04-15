@@ -2,19 +2,17 @@ const sqlite3 = require('sqlite3');
 const { open } = require('sqlite');
 
 
-const testDatabase = async function (db) {
-  let row = await db.get('SELECT * FROM test WHERE name="Foo Bar"');
-
-  return row;
-}
+const setupDatabase = async function (db) {
+  await db.exec('CREATE TABLE test (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name VARCHAR(64))');
+};
 
 open({
   filename: 'data/foo',
   driver: sqlite3.Database
 }).then((db) => {
-  testDatabase(db)
-    .then((row) => {
-      console.log('Returned row: ', row);
+  setupDatabase(db)
+    .then(() => {
+      console.log('Database setup complete');
       db.close()
         .then(() => {
           console.log('Closed the database');
