@@ -21,7 +21,7 @@ open({
           console.log('Caught error while closing! ', error)
         });
     })
-    .catch(() => {
-      console.log('Caught error');
+    .catch((err) => {
+      console.log('Caught error: ', err);
     });
 });
