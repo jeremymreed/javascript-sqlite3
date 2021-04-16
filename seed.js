@@ -1,11 +1,14 @@
+const { v4: uuidv4 } = require('uuid');
 const sqlite3 = require('sqlite3');
 const { open } = require('sqlite');
 
 
 const seedDatabase = async function (db) {
-  await db.exec('INSERT INTO test (name) VALUES ("Foo Bar")');
+  let nameID = uuidv4();
 
-  await db.exec('INSERT INTO foo (nameID, type) VALUES (1, "DAMN SQL BULLSHIT")')
+  await db.run('INSERT INTO test (nameID, name) VALUES (?, "Foo Bar")', nameID);
+
+  await db.run('INSERT INTO foo (nameID, type) VALUES (?, "DAMN SQL BULLSHIT")', nameID)
 }
 
 open({
