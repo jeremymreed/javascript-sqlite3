@@ -21,14 +21,22 @@ const getAllRowsFromFooWithSameNameID = async function (db) {
   return joinSameNameIDResult;
 }
 
+const getAllRowsJoinedByNameID = async function (db) {
+  let joinAllRowsByNameIDResult = await db.all('SELECT * FROM foo INNER JOIN test ON test.nameID = foo.nameID');
+
+  return joinAllRowsByNameIDResult;
+}
+
 const testDatabase = async function (db) {
   let allRows = await getAllRows(db);
   let joinResult = await testJoins(db);
   let joinSameNameIDResult = await getAllRowsFromFooWithSameNameID(db);
+  let joinAllRowsByNameIDResult = await getAllRowsJoinedByNameID(db);
 
   console.log('allRows: ', allRows);
   console.log('joinResult: ', joinResult);
   console.log('joinSameNameIDResult: ', joinSameNameIDResult);
+  console.log('joinAllRowsByNameIDResult: ', joinAllRowsByNameIDResult);
 }
 
 open({
