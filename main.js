@@ -9,7 +9,7 @@ const testDatabase = async function (db) {
 }
 
 open({
-  filename: 'data/foo',
+  filename: 'data/foo.sqlite3',
   driver: sqlite3.Database
 }).then((db) => {
   testDatabase(db)
