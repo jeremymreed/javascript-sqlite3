@@ -3,7 +3,7 @@ const { open } = require('sqlite');
 
 
 const testDatabase = async function (db) {
-  let row = await db.get('SELECT * FROM test WHERE name="Foo Bar"');
+  let row = await db.all('SELECT * FROM test WHERE name="Foo Bar"');
 
   return row;
 }
