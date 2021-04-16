@@ -9,7 +9,7 @@ const getAllRows = async function (db) {
 }
 
 const testJoins = async function (db) {
-  let joinResult = await db.get('SELECT * FROM foo INNER JOIN test ON test.id = foo.nameID WHERE foo.type="DAMN SQL BULLSHIT"');
+  let joinResult = await db.get('SELECT * FROM foo INNER JOIN test ON test.nameID = foo.nameID WHERE foo.type="DAMN SQL BULLSHIT"');
 
   return joinResult;
 }
