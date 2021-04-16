@@ -2,10 +2,16 @@ const sqlite3 = require('sqlite3');
 const { open } = require('sqlite');
 
 
-const testDatabase = async function (db) {
-  let row = await db.all('SELECT * FROM test WHERE name="Foo Bar"');
+const getAllRows = async function (db) {
+  let rows = await db.all('SELECT * FROM test WHERE name="Foo Bar"');
 
-  return row;
+  return rows;
+}
+
+const testDatabase = async function (db) {
+  let allRows = await getAllRows(db);
+
+  console.log('allRows: ', allRows);
 }
 
 open({
@@ -13,8 +19,7 @@ open({
   driver: sqlite3.Database
 }).then((db) => {
   testDatabase(db)
-    .then((row) => {
-      console.log('Returned row: ', row);
+    .then(() => {
       db.close()
         .then(() => {
           console.log('Closed the database');
