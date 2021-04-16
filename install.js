@@ -4,6 +4,8 @@ const { open } = require('sqlite');
 
 const setupDatabase = async function (db) {
   await db.exec('CREATE TABLE test (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name VARCHAR(64))');
+
+  await db.exec('CREATE TABLE foo (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, nameID INTEGER, type VARCHAR(64), FOREIGN KEY (nameID) REFERENCES test(id))');
 };
 
 open({
