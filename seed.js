@@ -4,6 +4,8 @@ const { open } = require('sqlite');
 
 const seedDatabase = async function (db) {
   await db.exec('INSERT INTO test (name) VALUES ("Foo Bar")');
+
+  await db.exec('INSERT INTO foo (nameID, type) VALUES (1, "DAMN SQL BULLSHIT")')
 }
 
 open({
