@@ -8,10 +8,18 @@ const getAllRows = async function (db) {
   return rows;
 }
 
+const testJoins = async function (db) {
+  let joinResult = await db.get('SELECT * FROM foo INNER JOIN test ON test.id = foo.nameID WHERE foo.type="DAMN SQL BULLSHIT"');
+
+  return joinResult;
+}
+
 const testDatabase = async function (db) {
   let allRows = await getAllRows(db);
+  let joinResult = await testJoins(db);
 
   console.log('allRows: ', allRows);
+  console.log('joinResult: ', joinResult);
 }
 
 open({
