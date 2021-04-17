@@ -12,6 +12,8 @@ const seedDatabase = async function (db) {
   // Prices in cents.  Dinero.js will want its input this way.
   let price0 = 150;
   let price1 = 200;
+  let price2 = 768;
+  let price3 = 700;
 
   let start = 1551398400000;
   let end = 1551498400000;
@@ -127,7 +129,7 @@ const seedDatabase = async function (db) {
     )',
     instanceId2,
     templateId1,
-    price0,
+    price2,
     start,
     end,
     purchaseDate
@@ -155,7 +157,7 @@ const seedDatabase = async function (db) {
     )',
     instanceId3,
     templateId1,
-    price1,
+    price3,
     start,
     end,
     purchaseDate
