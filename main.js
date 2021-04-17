@@ -1,6 +1,4 @@
-const sqlite3 = require('sqlite3');
-const { open } = require('sqlite');
-
+const Database = require('./Database');
 
 const getAllRows = async function (db) {
   let rows = await db.all('SELECT * FROM test WHERE name="Foo Bar"');
@@ -39,10 +37,7 @@ const testDatabase = async function (db) {
   console.log('joinAllRowsByNameIDResult: ', joinAllRowsByNameIDResult);
 }
 
-open({
-  filename: 'data/foo.sqlite3',
-  driver: sqlite3.Database
-}).then((db) => {
+Database.openDb().then((db) => {
   testDatabase(db)
     .then(() => {
       db.close()

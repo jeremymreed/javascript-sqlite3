@@ -1,7 +1,4 @@
-const { v4: uuidv4 } = require('uuid');
-const sqlite3 = require('sqlite3');
-const { open } = require('sqlite');
-
+const Database = require('./Database');
 
 const seedDatabase = async function (db) {
   let nameID0 = '3a12bc10-f90d-42b3-a32f-ed9d3500731fj'
@@ -29,12 +26,7 @@ const seedDatabase = async function (db) {
   await db.run('INSERT INTO foo (nameID, type, price) VALUES (?, "Taylor Swift", ?)', nameID2, price2);
 }
 
-open({
-  filename: 'data/foo.sqlite3',
-  driver: sqlite3.Database
-}).then((db) => {
-  sqlite3.verbose();
-
+Database.openDb().then((db) => {
   seedDatabase(db)
     .then(() => {
       console.log('Seeded the database!');
