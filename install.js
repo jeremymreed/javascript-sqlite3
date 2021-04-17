@@ -1,9 +1,23 @@
 const Database = require('./Database');
 
 const setupDatabase = async function (db) {
-  await db.exec('CREATE TABLE test (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, nameID VARCHAR(36), name VARCHAR(64))');
+  await db.exec('CREATE TABLE item_templates ( \
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
+    templateId VARCHAR(36), \
+    make VARCHAR(64) \
+    model VARCHAR(64) \
+  )');
 
-  await db.exec('CREATE TABLE foo (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, nameID VARCHAR(36), type VARCHAR(64), price DECIMAL(16,4), FOREIGN KEY (nameID) REFERENCES test(nameID))');
+  await db.exec('CREATE TABLE item_instances ( \
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
+    templateId VARCHAR(36), \
+    source VARCHAR(64), \
+    price DECIMAL(16,4), \
+    start, BIGINT \
+    end, BIGINT \
+    purchaseDate, BIGINT \
+    FOREIGN KEY (templateId) REFERENCES test(templateId) \
+  )');
 };
 
 Database.openDb().then((db) => {
