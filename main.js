@@ -1,40 +1,25 @@
 const Database = require('./Database');
 
-const getAllRows = async function (db) {
-  let rows = await db.all('SELECT * FROM test WHERE name="Foo Bar"');
-
-  return rows;
+const getAllItemTemplates = async function (db) {
+  return await db.all('SELECT * FROM item_templates');
 }
 
-const testJoins = async function (db) {
-  let joinResult = await db.get('SELECT * FROM foo INNER JOIN test ON test.nameID = foo.nameID WHERE foo.type="DAMN SQL BULLSHIT"');
-
-  return joinResult;
+const getAllItemInstances = async function (db) {
+  return await db.all('SELECT * FROM item_instances');
 }
 
-const getAllRowsFromFooWithSameNameID = async function (db) {
-  let nameID = '3a12bc10-f90d-42b3-a32f-ed9d3500731fj';
-  let joinSameNameIDResult = await db.all('SELECT * FROM foo INNER JOIN test ON test.nameID = foo.nameID where foo.nameID = ?', nameID);
-
-  return joinSameNameIDResult;
-}
-
-const getAllRowsJoinedByNameID = async function (db) {
-  let joinAllRowsByNameIDResult = await db.all('SELECT * FROM foo INNER JOIN test ON test.nameID = foo.nameID');
-
-  return joinAllRowsByNameIDResult;
+const getAllItems = async function (db) {
+  return await db.all('SELECT * FROM item_instances INNER JOIN item_templates ON item_instances.templateId = item_templates.templateId');
 }
 
 const testDatabase = async function (db) {
-  let allRows = await getAllRows(db);
-  let joinResult = await testJoins(db);
-  let joinSameNameIDResult = await getAllRowsFromFooWithSameNameID(db);
-  let joinAllRowsByNameIDResult = await getAllRowsJoinedByNameID(db);
+  let allItemTemplates = await getAllItemTemplates(db);
+  let allItemInstances = await getAllItemInstances(db);
+  let allItems = await getAllItems(db);
 
-  console.log('allRows: ', allRows);
-  console.log('joinResult: ', joinResult);
-  console.log('joinSameNameIDResult: ', joinSameNameIDResult);
-  console.log('joinAllRowsByNameIDResult: ', joinAllRowsByNameIDResult);
+  console.log('allItemTemplates: ', allItemTemplates);
+  console.log('allItemInstances: ', allItemInstances);
+  console.log('allItems: ', allItems);
 }
 
 Database.openDb().then((db) => {
