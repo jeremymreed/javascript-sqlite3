@@ -6,6 +6,8 @@ const seedDatabase = async function (db) {
 
   let instanceId0 = '8bcb9c54-4966-4b7f-8ad8-6aa9340cf54c';
   let instanceId1 = '39879c5d-7eb2-4024-b686-6d4c3fbfbbe1';
+  let instanceId2 = '9967ff90-b95d-4bcc-894b-e00653061c3a';
+  let instanceId3 = '0b0b5976-6584-4893-bbe2-e03abf24fe7d';
 
   // Prices in cents.  Dinero.js will want its input this way.
   let price0 = 150;
@@ -97,6 +99,62 @@ const seedDatabase = async function (db) {
     )',
     instanceId1,
     templateId0,
+    price1,
+    start,
+    end,
+    purchaseDate
+  );
+
+  await db.run('INSERT INTO item_instances \
+    ( \
+      instanceId, \
+      templateId, \
+      source, \
+      price, \
+      start, \
+      end, \
+      purchaseDate \
+    ) \
+    VALUES \
+    ( \
+      ?, \
+      ?, \
+      "Target", \
+      ?, \
+      ?, \
+      ?, \
+      ? \
+    )',
+    instanceId2,
+    templateId1,
+    price0,
+    start,
+    end,
+    purchaseDate
+  );
+
+  await db.run('INSERT INTO item_instances \
+    ( \
+      instanceId, \
+      templateId, \
+      source, \
+      price, \
+      start, \
+      end, \
+      purchaseDate \
+    ) \
+    VALUES \
+    ( \
+      ?, \
+      ?, \
+      "Wegmans", \
+      ?, \
+      ?, \
+      ?, \
+      ? \
+    )',
+    instanceId3,
+    templateId1,
     price1,
     start,
     end,
