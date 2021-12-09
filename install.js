@@ -1,24 +1,24 @@
 const Database = require('./Database');
 
 const setupDatabase = async function (db) {
-  await db.exec('CREATE TABLE item_templates ( \
-    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
-    templateId VARCHAR(36), \
-    make VARCHAR(64), \
-    model VARCHAR(64) \
-  )');
+  await db.exec(`CREATE TABLE item_templates (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    templateId VARCHAR(36),
+    make VARCHAR(64),
+    model VARCHAR(64)
+  )`);
 
-  await db.exec('CREATE TABLE item_instances ( \
-    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
-    instanceId VARCHAR(36), \
-    templateId VARCHAR(36), \
-    source VARCHAR(64), \
-    price DECIMAL(16,4), \
-    start BIGINT, \
-    end BIGINT, \
-    purchaseDate BIGINT, \
-    FOREIGN KEY (templateId) REFERENCES test(templateId) \
-  )');
+  await db.exec(`CREATE TABLE item_instances ( \
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    instanceId VARCHAR(36),
+    templateId VARCHAR(36),
+    source VARCHAR(64),
+    price DECIMAL(16,4),
+    start BIGINT,
+    end BIGINT,
+    purchaseDate BIGINT,
+    FOREIGN KEY (templateId) REFERENCES test(templateId)
+  )`);
 };
 
 Database.openDb().then((db) => {
