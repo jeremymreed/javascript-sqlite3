@@ -19,58 +19,58 @@ const seedDatabase = async function (db) {
   let end = 1551498400000;
   let purchaseDate = 1551398400000;
 
-  await db.run(' \
-    INSERT INTO item_templates \
-    ( \
-      templateId, \
-      make, \
-      model \
-    ) \
-    VALUES \
-    ( \
-      ?, \
-      "Crest", \
-      "Toothpaste" \
-    )',
+  await db.run(`
+    INSERT INTO item_templates
+    (
+      templateId,
+      make,
+      model
+    )
+    VALUES
+    (
+      ?,
+      "Crest",
+      "Toothpaste"
+    )`,
     templateId0
   );
 
-  await db.run(' \
-    INSERT INTO item_templates \
-    ( \
-      templateId, \
-      make, \
-      model \
-    ) \
-    VALUES \
-    ( \
-      ?, \
-      "Ragu", \
-      "Vodka Sauce" \
-    )',
+  await db.run(`
+    INSERT INTO item_templates
+    (
+      templateId,
+      make,
+      model
+    )
+    VALUES
+    (
+      ?,
+      "Ragu",
+      "Vodka Sauce"
+    )`,
     templateId1
   );
 
-  await db.run('INSERT INTO item_instances \
-    ( \
-      instanceId, \
-      templateId, \
-      source, \
-      price, \
-      start, \
-      end, \
-      purchaseDate \
-    ) \
-    VALUES \
-    ( \
-      ?, \
-      ?, \
-      "Target", \
-      ?, \
-      ?, \
-      ?, \
-      ? \
-    )',
+  await db.run(`INSERT INTO item_instances
+    (
+      instanceId,
+      templateId,
+      source,
+      price,
+      start,
+      end,
+      purchaseDate
+    )
+    VALUES
+    (
+      ?,
+      ?,
+      "Target",
+      ?,
+      ?,
+      ?,
+      ?
+    )`,
     instanceId0,
     templateId0,
     price0,
@@ -79,26 +79,26 @@ const seedDatabase = async function (db) {
     purchaseDate
   );
 
-  await db.run('INSERT INTO item_instances \
-    ( \
-      instanceId, \
-      templateId, \
-      source, \
-      price, \
-      start, \
-      end, \
-      purchaseDate \
-    ) \
-    VALUES \
-    ( \
-      ?, \
-      ?, \
-      "Wegmans", \
-      ?, \
-      ?, \
-      ?, \
-      ? \
-    )',
+  await db.run(`INSERT INTO item_instances
+    (
+      instanceId,
+      templateId,
+      source,
+      price,
+      start,
+      end,
+      purchaseDate
+    )
+    VALUES
+    (
+      ?,
+      ?,
+      "Wegmans",
+      ?,
+      ?,
+      ?,
+      ?
+    )`,
     instanceId1,
     templateId0,
     price1,
@@ -107,26 +107,26 @@ const seedDatabase = async function (db) {
     purchaseDate
   );
 
-  await db.run('INSERT INTO item_instances \
-    ( \
-      instanceId, \
-      templateId, \
-      source, \
-      price, \
-      start, \
-      end, \
-      purchaseDate \
-    ) \
-    VALUES \
-    ( \
-      ?, \
-      ?, \
-      "Target", \
-      ?, \
-      ?, \
-      ?, \
-      ? \
-    )',
+  await db.run(`INSERT INTO item_instances
+    (
+      instanceId,
+      templateId,
+      source,
+      price,
+      start,
+      end,
+      purchaseDate
+    )
+    VALUES
+    (
+      ?,
+      ?,
+      "Target",
+      ?,
+      ?,
+      ?,
+      ?
+    )`,
     instanceId2,
     templateId1,
     price2,
@@ -135,26 +135,26 @@ const seedDatabase = async function (db) {
     purchaseDate
   );
 
-  await db.run('INSERT INTO item_instances \
-    ( \
-      instanceId, \
-      templateId, \
-      source, \
-      price, \
-      start, \
-      end, \
-      purchaseDate \
-    ) \
-    VALUES \
-    ( \
-      ?, \
-      ?, \
-      "Wegmans", \
-      ?, \
-      ?, \
-      ?, \
-      ? \
-    )',
+  await db.run(`INSERT INTO item_instances
+    (
+      instanceId,
+      templateId,
+      source,
+      price,
+      start,
+      end,
+      purchaseDate
+    )
+    VALUES
+    (
+      ?,
+      ?,
+      "Wegmans",
+      ?,
+      ?,
+      ?,
+      ?
+    )`,
     instanceId3,
     templateId1,
     price3,
