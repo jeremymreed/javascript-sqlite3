@@ -1,3 +1,4 @@
+const Dinero = require('dinero.js');
 const Database = require('./Database');
 
 const seedDatabase = async function (db) {
@@ -10,10 +11,10 @@ const seedDatabase = async function (db) {
   let instanceId3 = '0b0b5976-6584-4893-bbe2-e03abf24fe7d';
 
   // Prices in cents.  Dinero.js will want its input this way.
-  let price0 = 150;
-  let price1 = 200;
-  let price2 = 768;
-  let price3 = 700;
+  let price0 = Dinero({ amount: 150, currency: 'USD' });
+  let price1 = Dinero({ amount: 200, currency: 'USD' });
+  let price2 = Dinero({ amount: 768, currency: 'USD' });
+  let price3 = Dinero({ amount: 700, currency: 'USD' });
 
   let start = 1551398400000;
   let end = 1551498400000;
@@ -57,6 +58,7 @@ const seedDatabase = async function (db) {
       templateId,
       source,
       price,
+      currency,
       start,
       end,
       purchaseDate
@@ -66,6 +68,7 @@ const seedDatabase = async function (db) {
       ?,
       ?,
       "Target",
+      ?,
       ?,
       ?,
       ?,
@@ -73,7 +76,8 @@ const seedDatabase = async function (db) {
     )`,
     instanceId0,
     templateId0,
-    price0,
+    price0.getAmount(),
+    price0.getCurrency(),
     start,
     end,
     purchaseDate
@@ -85,6 +89,7 @@ const seedDatabase = async function (db) {
       templateId,
       source,
       price,
+      currency,
       start,
       end,
       purchaseDate
@@ -97,11 +102,13 @@ const seedDatabase = async function (db) {
       ?,
       ?,
       ?,
+      ?,
       ?
     )`,
     instanceId1,
     templateId0,
-    price1,
+    price1.getAmount(),
+    price1.getCurrency(),
     start,
     end,
     purchaseDate
@@ -113,6 +120,7 @@ const seedDatabase = async function (db) {
       templateId,
       source,
       price,
+      currency,
       start,
       end,
       purchaseDate
@@ -125,11 +133,13 @@ const seedDatabase = async function (db) {
       ?,
       ?,
       ?,
+      ?,
       ?
     )`,
     instanceId2,
     templateId1,
-    price2,
+    price2.getAmount(),
+    price2.getCurrency(),
     start,
     end,
     purchaseDate
@@ -141,6 +151,7 @@ const seedDatabase = async function (db) {
       templateId,
       source,
       price,
+      currency,
       start,
       end,
       purchaseDate
@@ -153,11 +164,13 @@ const seedDatabase = async function (db) {
       ?,
       ?,
       ?,
+      ?,
       ?
     )`,
     instanceId3,
     templateId1,
-    price3,
+    price3.getAmount(),
+    price3.getCurrency(),
     start,
     end,
     purchaseDate
