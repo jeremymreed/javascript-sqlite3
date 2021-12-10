@@ -14,6 +14,7 @@ const setupDatabase = async function (db) {
     templateId VARCHAR(36),
     source VARCHAR(64),
     price INTEGER,
+    currency VARCHAR(3),
     start BIGINT,
     end BIGINT,
     purchaseDate BIGINT,
