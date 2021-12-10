@@ -8,7 +8,7 @@ const setupDatabase = async function (db) {
     model VARCHAR(64)
   )`);
 
-  await db.exec(`CREATE TABLE item_instances ( \
+  await db.exec(`CREATE TABLE item_instances (
     id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     instanceId VARCHAR(36),
     templateId VARCHAR(36),
