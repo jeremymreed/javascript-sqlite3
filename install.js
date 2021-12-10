@@ -13,7 +13,7 @@ const setupDatabase = async function (db) {
     instanceId VARCHAR(36),
     templateId VARCHAR(36),
     source VARCHAR(64),
-    price DECIMAL(16,4),
+    price INTEGER,
     start BIGINT,
     end BIGINT,
     purchaseDate BIGINT,
